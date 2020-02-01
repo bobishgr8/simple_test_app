@@ -4,5 +4,5 @@ itsdangerous==0.24
 Jinja2==2.10
 MarkupSafe==1.0
 Werkzeug==0.14.1
-numpy-1.9.2+mkl-cp27-none-win32.whl
+numpy-1.11.2rc1+mkl-cp34-none-win32.whl
 Matplotlib==3.1.2
