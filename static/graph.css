@@ -1,0 +1,16 @@
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    text-align: center;
+    padding: 5px;
+    margin: 3px;
+}
+
+.image-container{
+    margin: auto;
+    padding: 2px;
+    border: solid grey;
+    border-radius: 5px;
+    align-content: center;
+    
+}
