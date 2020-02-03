@@ -4,12 +4,17 @@ import numpy as np
 import os
 
 
-def generate_sin_plot(amplitude,frequency):
+def generate_sin_plot(amplitude=1,frequency=1):
     x = np.arange(0,4*np.pi,0.1)   
     plt.plot(x,amplitude*np.sin(frequency*x))
     plt.savefig("static/Images/graph.png",bbox="tight",pad_inches=2)
     plt.clf()
 
+def input_sanitisation(amp,freq):
+    if amp.isnumeric() and freq.isnumeric():
+        return float(amp),float(freq)
+    else:
+        return TypeError
 
 app = Flask("__name__")
 
@@ -27,10 +32,13 @@ def landing():
 
 @app.route("/plot", methods=["POST"])
 def plot_graph():
-    amp = int(request.form["Amplitude"])
-    freq = int(request.form["frequency"])
-    generate_sin_plot(amp,freq)
-    return render_template("graph.html")
+    try:
+        amp,freq = input_sanitisation(request.form["Amplitude"],request.form["Frequency"])
+    except:
+        return "<h1> Input is invalid </h1>"
+    else:
+        generate_sin_plot(amp,freq)
+        return render_template("graph.html")
 
 if __name__ == "__main__":
     app.run()
